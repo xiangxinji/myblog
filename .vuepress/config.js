@@ -1,7 +1,6 @@
 module.exports = {
     title: '向歆纪的博客',
     description: '这是向歆纪的博客',
-    base : 'myblog' ,
     themeConfig: {
         repo: 'https://github.com/xiangxinji/myblog.git',
         repoLabel: '查看源码',
