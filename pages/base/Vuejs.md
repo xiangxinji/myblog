@@ -1,3 +1,8 @@
 # this is vuejs in base module 
+[[toc]]
 
-## gahaha 
+## 基础理论篇
+
+```js
+import da from 'da'
+```

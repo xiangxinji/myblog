@@ -1,16 +1,17 @@
 module.exports = {
     title: '向歆纪的博客',
     description: '这是向歆纪的博客',
+    base : 'myblog' ,
     themeConfig: {
-
+        repo: 'https://github.com/xiangxinji/myblog.git',
+        repoLabel: '查看源码',
         smoothScroll: true,
-
+        lastUpdated: '向歆纪写于', // string | boolean
         nav: [
             {text: '基础', link: '/pages/base/'},
             {text: '中级', link: '/pages/middle/'},
             {text: '架构', link: '/pages/construct/'},
             {text: '日志', link: '/pages/log/'},
-            {text: 'Github', link: 'https://github.com'},
         ],
         sidebar: [
             // '/',
@@ -44,4 +45,7 @@ module.exports = {
             }
         ]
     },
+    markdown: {
+        lineNumbers: true
+    }
 }
