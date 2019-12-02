@@ -1,1 +1,0 @@
-# typescript in base 

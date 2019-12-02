@@ -1,7 +1,6 @@
 # 基础模块
 
-本模块其实没啥屌用
-
+一些基础东西
 
 ## [Vuejs](/pages/base/Vuejs.md)
 
