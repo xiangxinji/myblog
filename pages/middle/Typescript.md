@@ -1,5 +1,7 @@
 # Typescript 
 
+<img :src="$withBase('/images/typescript.png')" alt="Vue">
+
 ## 基本类型 
 
 boolean  

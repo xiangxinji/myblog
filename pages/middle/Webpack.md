@@ -1,5 +1,8 @@
 
 # Webpack(4.0)
+<img :src="$withBase('/images/webpack.jpg')" alt="Vue">
+
+
 
 ### Code Splitting  (代码拆分)
 
@@ -379,21 +382,122 @@ optimization: {
 
 
 
+## DLL 打包 
+
+dll 类似于将你想要的模块放入一个公共仓库,然后打包的时候就直接去这个公共仓库里面取
+
+想要完成dll 打包 得先完成两步
+
+1. 写一个webpack.dll.js 来生成 manifest.json文件和仓库js
+2. 在你要构建的主文件加入这个dll插件(和生成dll的插件不是同一个)
+
+示例
+
+生成manifest.json 文件如下 
+
+```javascript
+const path = require('path')
+const webpack = require('webpack')
+
+module.exports = {
+    mode: 'production',
+    resolve: {
+        resolver: {
+            'vue$': 'vue/dist/vue.esm.js' //内部为正则表达式  vue结尾的
+        }
+    },
+    entry: {
+        // 要生成的模块为 vendor , 里面包含 vue和lodash 模块 
+        vendor: [
+            'vue',
+            'lodash'
+        ]
+    },
+    // 生成的 仓库 js 为 vendor.dll.js
+    output: {
+        filename: '[name].dll.js',
+        // 将仓库文件存放至 .... 
+        path: path.join(__dirname, '../dll/librarys'),
+        // library 名字为 vendor 
+        library: '[name]'
+    },
+    plugins: [
+        new webpack.DllPlugin({
+            name: '[name]',
+            // 生成mainifest.json 文件的位置 
+            path: path.join(__dirname, '../dll/manifest.json')
+        })
+    ]
+}
+```
+
+然后在主文件中加入此插件 
+
+```javascript
+  new webpack.DllReferencePlugin({
+            // 引用的上下文 
+      		context:path.join(__dirname , '../' , 'dll/'),
+            // 基于上下文去找vendor.dll.js
+      		name : 'vendor' ,
+      		// 引入js
+            manifest: require('../dll/manifest.json')
+      }),
+```
 
 
 
 
 
+## 缓存构建
 
+缓存构建就是将第一次构建的一些东西缓存起来 , 缓存目录为 node_modules 中的 .cache 文件夹中 
 
+缓存构建分为三种构建 
 
+1. babel 转换缓存
+2. terser-webpack-plugin  压缩缓存 
+3. hard-source-webpack-plugin  业务模块缓存 
 
+一个一个来: 
 
+babel缓存 
 
+```javascript
+{
+   loader: "babel-loader",
+   options: {
+         presets: ['@babel/preset-env'],
+         cacheDirectory: true // 开启缓存
+	}
+}
+```
 
+terser 缓存
 
+```javascript
+ optimization: {
+        minimizer: [
+            new TerserPlugin({
+                parallel: 4,
+                cache: true // 开启缓存
+            })
+        ]
+    },
+```
+
+业务缓存
+
+加入这个插件即可
+
+```javascript
+ plugins:[
+ 	new HardSourceWebpackPlugin()    
+ ]
+```
 
 
 
  
+
+
 
