@@ -496,8 +496,84 @@ terser 缓存
 ```
 
 
+## 图片压缩 
+虽然有url-loader 来完成指定大小内图片将转为base64.但是在大图片的情况下 我们还是希望能自动化的完成图片压缩 
+在教程上面看的使用 imagemin-webpack-plugin 这个插件来完成这个自动化功能, 但是本人试的时候不仅没效果还贼慢,估计是碰到坑了 , 所以转念换了另外一个方式 
+.使用 image-webpack-loader  
 
- 
+下面直接看代码
+
+首先安装image-webpack-loader  
+```bash
+npm i -D image-webpack-loader
+```
+载入配置
+```javascript
+        {
+                test: /\.(png|svg|jpeg|jpg)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 50000,
+                            name: 'images/[name]_[hash].[ext]'
+                        }
+                    },
+                    {
+                        loader: "image-webpack-loader" ,
+                        options: {
+                            bypassOnDebug :true
+                        }
+                    }
+                ]
+}
+```
+此时  image-webpack-loader 就会自动将图片进行压缩,并且好像会存放至image 目录中 
+
+End
+
+
+## CSSTreeShaking 
+抹除没有用到的css 
+
+日常第一步 安装
+```bash
+    npm i -D glob-all purify-css purifycss-webpack 
+```
+然后就开始配置 添加这个插件  
+```javascript 
+ new PurifyCSS({
+        // 读取 src下面的 所有的html 和 所有的js , 来扫描是否使用到了这个css 选择器 
+    paths: glob.sync([
+             path.join(__dirname , '../' , 'src/*/*.html') ,
+             path.join(__dirname , '../' , 'src/*/*.js')
+    ])
+ })
+```
+稍微注意一下的是, 如果配置错误,你打包出来的css 将会没有内容 
+End 
+
+
+## 动态polyfill
+让babel-core 解决 es6箭头函数 等等语法问题 , 然后使用动态polyfill 来根据浏览器的User-Agent 来进行自动获取polyfill 
+
+其实就是一段script 标签, 然后我们使用 阿里 提供的  
+
+```html
+<script src="https://polyfill.alicdn.com/polyfill.min.js?features=Promise%2CArray.prototype.includes"></script>
+``` 
+
+他们采用features 来控制你需要的polifll 兼容, 如果不传默认 就默认全局polyfll
+
+
+
+
+
+
+
+
+
+
 
 
 
