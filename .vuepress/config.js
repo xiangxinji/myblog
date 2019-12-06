@@ -7,10 +7,9 @@ module.exports = {
         smoothScroll: true,
         lastUpdated: '向歆纪写于', // string | boolean
         nav: [
-            {text: '基础', link: '/pages/base/'},
+            {text: 'webpack(文章区)', link: '/pages/article/webpack/'},
             {text: '中级', link: '/pages/middle/'},
             {text: '架构', link: '/pages/construct/'},
-            {text: '日志', link: '/pages/log/'},
         ],
         sidebar: [
             // '/',
@@ -20,11 +19,6 @@ module.exports = {
             {
                 title : '首页',
                 path : '/',
-                collapsable: false,
-            },
-            {
-                title : '基础模块',
-                path : '/pages/base/',
                 collapsable: false,
             },
             {
@@ -38,9 +32,9 @@ module.exports = {
                 collapsable: false,
             },
             {
-                title : '日志',
-                path : '/pages/log/',
-                collapsable: false,
+                title : 'webpack文章模块',
+                path : '/pages/article/webpack/',
+                collapsable: false
             }
         ]
     },
