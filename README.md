@@ -6,21 +6,32 @@ tagline: (前端Vue开发者)
 footer: 非常感谢vue,vuepress提供这个机会 ^_^  ,  @Singee in 2019  
 ---
 
-:::tip 最新动态
-在下面
-:::
+<div style="height:200px;margin-bottom:100px;"></div>
 
-### [webpack 源码解析 (部分)](/pages/article/webpack/2.md)
+<style>
 
-
-### [图片压缩](/pages/middle/webpack.md#图片压缩) 
-
-
-### [CSSTreeShaking](/pages/middle/webpack.md#csstreeshaking) 
-
-
-### [动态polyfill](/pages/middle/webpack.md#动态polyfill) 
-
-
-
-
+body{
+   
+}
+.navbar .site-name{
+    animation: changeColor 3s linear infinite;
+}
+h1{
+animation: changeColor 3s linear infinite;
+    padding-top:60px;
+}
+@keyframes activning {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(900deg);
+    }
+    
+}
+@keyframes changeColor {
+    0%{color:#4e6e8e}
+    50%{color:skyblue}
+    100%{color:darkcyan}
+}
+</style>

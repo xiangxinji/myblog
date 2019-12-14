@@ -7,7 +7,8 @@ module.exports = {
         smoothScroll: true,
         lastUpdated: '向歆纪写于', // string | boolean
         nav: [
-            {text: 'webpack(文章区)', link: '/pages/article/webpack/'},
+            {text: 'eslint', link: '/pages/article/eslint/'},
+            {text: 'webpack', link: '/pages/article/webpack/'},
             {text: '中级', link: '/pages/middle/'},
             {text: '架构', link: '/pages/construct/'},
         ],
@@ -34,6 +35,11 @@ module.exports = {
             {
                 title : 'webpack文章模块',
                 path : '/pages/article/webpack/',
+                collapsable: false
+            },
+            {
+                title : 'eslint文章模块',
+                path : '/pages/article/eslint/',
                 collapsable: false
             }
         ]
