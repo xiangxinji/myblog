@@ -3,6 +3,8 @@
 <img :src="$withBase('/images/webpack.jpg')" alt="Vue">
 
 
+[webpack中文文档](https://www.webpackjs.com/)
+
 
 ### Code Splitting  (代码拆分)
 

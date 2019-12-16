@@ -9,6 +9,7 @@ module.exports = {
         nav: [
             {text: 'eslint', link: '/pages/article/eslint/'},
             {text: 'webpack', link: '/pages/article/webpack/'},
+            {text: 'nodejs', link: '/pages/middle/nodejs/'},
             {text: '中级', link: '/pages/middle/'},
             {text: '架构', link: '/pages/construct/'},
         ],

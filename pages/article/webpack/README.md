@@ -1,5 +1,11 @@
 # webpack (文章区)
  
+ <img :src="$withBase('/images/webpack.jpg')" alt="Vue">
+ 
+ 
+ [webpack中文文档](https://www.webpackjs.com/)
+ 
+ 
 此页面记录着的是一些webpack 的文章  
 
 
