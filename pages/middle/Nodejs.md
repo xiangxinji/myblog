@@ -93,3 +93,119 @@ setImmediate(() => {
     但是在cli-test中使用npm run cli 时, cli项目中的源码文件显示的是 cli-test 的目录
     
 ```
+
+
+## Buffer
+```javascript
+
+/**
+ * 
+ * 
+ *  Buffer : 在引入 TypedArray 之前，JavaScript 语言没有用于读取或操作二进制数据流的机制。 
+ * 
+ */
+//开创空间并且填充 
+console.log(Buffer.alloc(10, 1))
+
+// 开创空间但不填充 
+console.log(Buffer.allocUnsafe(10))
+
+// 获取字节长度
+console.log(Buffer.byteLength('向歆纪'))
+
+// 将字符串转成buffer 
+console.log(Buffer.from('向歆纪'))
+
+const b1 = Buffer.from('向')
+
+const b2 = Buffer.from('歆')
+
+const b3 = Buffer.from('纪')
+
+console.log(Buffer.concat([b1,b2,b3]).toString())
+
+const buf = Buffer.alloc(10)
+buf.fill('this is a 向歆纪')
+console.log(buf.toString())
+
+
+```
+## event 事件
+
+```javascript
+const EventEmitter = require("events");
+
+
+class MyEventEmitter extends EventEmitter {
+  constructor() {
+    super();
+    this.name = "张三";
+  }
+}
+
+const me = new MyEventEmitter();
+me.on("change", function  () {
+  console.log(this);
+});
+
+me.emit("change");
+
+
+
+me.once('change' , () => {
+    console.log('只会执行一次')
+})
+
+me.on('error' , (err) =>{
+    console.log(err)
+})
+
+me.emit('error' , new Error("错误了"))
+
+
+// 删除监听 removeListener 
+
+```
+
+
+## fs 文件系统 
+```javascript
+const fs = require("fs");
+
+ // *  nodejs 中使用异步操作可能更好 , 利用 异步架构的优势
+
+fs.readFile('./fs.module.example.js' ,'utf-8', (err , data) => {
+    if (err) throw err
+    console.log(data)
+})
+
+fs.writeFile('./readme.txt' , 'this is test code ' , err =>{
+    if (err) throw err
+    console.log('writer done !!!')
+})
+
+
+fs.stat('./readme.txt' ,(err , stat) => {
+    if (err ) throw err 
+    console.log(stat.isDirectory())
+    console.log(stat.isFile())
+})
+
+fs.rename('./readme.txt' , './r2.txt' , err => {
+    if (err) throw err 
+})
+
+ 
+// 操作平台可能有差异
+fs.watch(
+  "./fs.module.example.js",
+  {
+    // 开启深度监听
+    recursive: true
+  },
+  (eventType , filename) => {
+      console.log(eventType)
+  }
+);
+
+```
