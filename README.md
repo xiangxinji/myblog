@@ -1,9 +1,8 @@
 --- 
 home: true
-heroImage: /images/logo.png
-heroText: 向歆纪的博客
-tagline: (前端Vue开发者)
-footer: 非常感谢vue,vuepress提供这个机会 ^_^  ,  @Singee in 2019  
+heroText: singee blog 
+tagline: (vue developer)
+footer: Thank you very much Vue, vuepress for this opportunity @Singee in 2019  
 ---
 
 <div style="height:200px;margin-bottom:100px;"></div>

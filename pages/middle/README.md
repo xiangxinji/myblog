@@ -1,6 +1,4 @@
-# 中级模块
-
-自己认为算是中级的一些笔记了
+# middle context 
 
 ## [Webpack](/pages/middle/Webpack.md)
 

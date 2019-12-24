@@ -1,4 +1,4 @@
-# webpack (文章区)
+# webpack (article)
  
  <img :src="$withBase('/images/webpack.jpg')" alt="Vue">
  
