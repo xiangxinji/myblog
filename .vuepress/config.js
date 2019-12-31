@@ -7,16 +7,13 @@ module.exports = {
         smoothScroll: true,
         lastUpdated: 'singee write to ', // string | boolean
         nav: [
-            {text: 'eslint', link: '/pages/article/eslint/'},
-            {text: 'webpack', link: '/pages/article/webpack/'},
-            {text: 'nodejs', link: '/pages/middle/nodejs/'},
+            {text: 'article', link: '/pages/article/'},
+            {text: 'codelf', link: '/pages/codelf/'},
+            {text: 'lib', link: '/#'},
+            {text: '年终总结', link: '/pages/years/'},
             {text: 'middle', link: '/pages/middle/'},
         ],
         sidebar: [
-            // '/',
-            // '/pages/base/',
-            // '/pages/middle/',
-            // '/pages/construct/'
             {
                 title : 'home',
                 path : '/',
@@ -28,12 +25,12 @@ module.exports = {
                 collapsable: false,
             },
             {
-                title : 'webpack',
+                title : 'article',
                 path : '/pages/article/webpack/',
                 collapsable: false
             },
             {
-                title : 'eslint',
+                title : 'codelf',
                 path : '/pages/article/eslint/',
                 collapsable: false
             }
