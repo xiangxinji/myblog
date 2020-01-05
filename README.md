@@ -1,8 +1,18 @@
---- 
+---
 home: true
-heroText: singee blog 
-tagline: (vue developer)
-footer: Thank you very much Vue, vuepress for this opportunity @Singee in 2019  
+heroImage: /images/logo.png
+heroText: SingeeBlog
+tagline: 没事瞎记记
+actionText: 查看网页源代码
+actionLink: https://github.com/xiangxinji/myblog.git
+features:
+- title: 日常
+  details: 每天玩玩电脑,摸摸鱼。
+- title: 爱好
+  details: 电子音乐,最右,李永乐老师,哔哩哔哩,英雄联盟
+- title: 烦恼
+  details: 其他的还好,就是最近掉头发有点猛。
+footer: Thank you very much Vue, vuepress for this opportunity | Singee in 2020 
 ---
 
 <div style="height:200px;margin-bottom:100px;"></div>
