@@ -1,10 +1,7 @@
 ---
 home: true
-heroImage: /images/logo.png
-heroText: SingeeBlog
+heroText: Singee😁
 tagline: 没事瞎记记
-actionText: 查看网页源代码
-actionLink: https://github.com/xiangxinji/myblog.git
 features:
 - title: 日常
   details: 每天玩玩电脑,摸摸鱼。

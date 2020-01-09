@@ -1,5 +1,5 @@
 module.exports = {
-  title: "Singee",
+  title: "😈Singee",
   description: "this is singee blog ",
   themeConfig: {
     repo: "https://github.com/xiangxinji/myblog.git",
@@ -7,37 +7,40 @@ module.exports = {
     smoothScroll: true,
     lastUpdated: "singee write to ", // string | boolean
     nav: [
-        { text: "article", link: "/pages/article/" },
-        { text: "源码解析", link: "/pages/source/" },
-      { text: "codelf", link: "/pages/codelf/" },
-      { text: "lib", link: "/#" },
-      { text: "年终总结", link: "/pages/years/" },
-      { text: "middle", link: "/pages/middle/" }
+        { text: "😄文章", link: "/pages/article/" },
+        { text: "😜源码解析", link: "/pages/source/" },
+        { text: "🤨基础", link: "/pages/base/" },
+        { text: "😵技术栈", link: "/pages/middle/" }
     ],
     sidebar: [
       {
-        title: "home",
+        title: "😈首页",
         path: "/",
         collapsable: false
       },
       {
-        title: "middle",
+        title: "🤨基础东东",
+        path: "/pages/base/",
+        collapsable: false
+      },
+      {
+        title: "📁技术栈",
         path: "/pages/middle/",
         collapsable: false
       },
       {
-        title: "source",
+        title: "🧪源代码分析",
         path: "/pages/source/",
         collapsable: false
       },
       {
-        title: "article",
+        title: "🧫随便写写的文章",
         path: "/pages/article/webpack/",
         collapsable: false
       },
       {
-        title: "codelf",
-        path: "/pages/article/eslint/",
+        title: "😳年终总结",
+        path: "/pages/years/2019",
         collapsable: false
       }
     ]
