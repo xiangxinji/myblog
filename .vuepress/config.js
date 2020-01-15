@@ -10,6 +10,7 @@ module.exports = {
         { text: "😄文章", link: "/pages/article/" },
         { text: "😜源码解析", link: "/pages/source/" },
         { text: "🤨基础", link: "/pages/base/" },
+        { text: "⌛设计模式", link: "/pages/dp/" },
         { text: "😵技术栈", link: "/pages/middle/" },
         { text: "🤗工程" , link : "/pages/build/"}
     ],
@@ -37,6 +38,11 @@ module.exports = {
       {
         title: "🧫随便写写的文章",
         path: "/pages/article/webpack/",
+        collapsable: false
+      },
+      {
+        title: "⌛设计模式",
+        path: "/pages/dp/",
         collapsable: false
       },
       {
