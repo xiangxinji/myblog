@@ -1,63 +1,79 @@
 module.exports = {
-  title: "😈Singee",
-  description: "this is singee blog ",
+  chainWebpack: (config, isServer) => {
+    // config 是 ChainableConfig 的一个实例
+    const isProd = process.env.NODE_ENV === "production";
+    if (isProd) {
+      console.log(config);
+      config.output.publicPath = "/myBlog";
+    }
+  },
+  title: "随记",
+  description: "大道至简",
   themeConfig: {
     repo: "https://github.com/xiangxinji/myblog.git",
-    repoLabel: "source code",
+    repoLabel: "存储库",
     smoothScroll: true,
-    lastUpdated: "singee write to ", // string | boolean
+    lastUpdated: "singee 写于 ", // string | boolean
     nav: [
-        { text: "😄文章", link: "/pages/article/" },
-        { text: "😜源码解析", link: "/pages/source/" },
-        { text: "🤨基础", link: "/pages/base/" },
-        { text: "⌛设计模式", link: "/pages/dp/" },
-        { text: "😵技术栈", link: "/pages/middle/" },
-        { text: "🤗工程" , link : "/pages/build/"}
+      { text: "书籍", link: "/pages/books/" },
+      { text: "文章", link: "/pages/article/" },
+      { text: "源码解析", link: "/pages/source/" },
+      { text: "基础", link: "/pages/base/" },
+      { text: "设计模式", link: "/pages/dp/" },
+      { text: "技术栈", link: "/pages/middle/" },
+      { text: "工程", link: "/pages/build/" },
+      { text: "兼容", link: "/pages/jr/" },
     ],
     sidebar: [
       {
-        title: "😈首页",
+        title: "首页",
         path: "/",
-        collapsable: false
+        collapsable: false,
       },
       {
-        title: "🤨基础东东",
+        title: "书籍",
+        path: "/pages/books/",
+        collapsable: false,
+      },
+
+      {
+        title: "文章",
+        path: "/pages/article/",
+        collapsable: false,
+      },
+
+      {
+        title: "基础",
         path: "/pages/base/",
-        collapsable: false
+        collapsable: false,
       },
+
       {
-        title: "📁技术栈",
-        path: "/pages/middle/",
-        collapsable: false
-      },
-      {
-        title: "🧪源代码分析",
-        path: "/pages/source/",
-        collapsable: false
-      },
-      {
-        title: "🧫随便写写的文章",
-        path: "/pages/article/webpack/",
-        collapsable: false
-      },
-      {
-        title: "⌛设计模式",
+        title: "设计模式",
         path: "/pages/dp/",
-        collapsable: false
+        collapsable: false,
       },
+
       {
-        title: "🍽️工程化",
+        title: "技术栈",
+        path: "/pages/middle/",
+        collapsable: false,
+      },
+
+      {
+        title: "工程",
         path: "/pages/build/",
-        collapsable: false
+        collapsable: false,
       },
+
       {
-        title: "😳年终总结",
-        path: "/pages/years/2019",
-        collapsable: false
-      }
-    ]
+        title: "兼容",
+        path: "/pages/jr/",
+        collapsable: false,
+      },
+    ],
   },
   markdown: {
-    lineNumbers: true
-  }
+    lineNumbers: true,
+  },
 };

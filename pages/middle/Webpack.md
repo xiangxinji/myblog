@@ -43,7 +43,7 @@ Code Splitting 与 webpack 无关   , 实现代码拆分有很多种形式
 
 ### optimization.splitChunks  配置 
 
-```javasciprt
+```javascript
 module.exports = {
   optimization : {
     splitChunks : {
