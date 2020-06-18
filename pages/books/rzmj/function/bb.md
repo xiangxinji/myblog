@@ -192,3 +192,160 @@ function getName() {
 }
 dealy(getName.bind(obj));
 ```
+
+## 关于缓存记忆函数
+
+缓存记忆函数的第二个版本 , 将自动将 key 的值 缓存起来
+
+```javascript
+// 当执行这个函数的时候,自动判断是否 _values中有没有 缓存了的值
+// 如果有, 直接返回 , 如果没有 ,则去调用  fn  , 此时fn = this
+// 因为你是 fn.memoized 函数
+Function.prototype.memoized = function(key) {
+  this._values = this._values || {};
+  if (this._values[key]) {
+    return this._values[key];
+  } else {
+    return (this._values[key] = this.call(this, key));
+  }
+};
+function total(count) {
+  let result = 0;
+  for (let i = 0; i <= count; i++) {
+    result += i;
+  }
+  return result;
+}
+console.log(total.memoized(1000));
+console.log(total._values);
+```
+
+不过我们这里每次需要去调用 memoized 函数 , 还是比较麻烦, 我们可以在通过一个包装的函数来自动调用 memoized 函数
+
+版本 2 .
+
+```javascript
+Function.prototype.memoized = function(key) {
+  this._values = this._values || {};
+  if (this._values[key]) {
+    return this._values[key];
+  } else {
+    return (this._values[key] = this.call(this, key));
+  }
+};
+
+Function.prototype.memoize = function() {
+  const fn = this;
+  return function(key) {
+    return fn.memoized.call(fn, key);
+  };
+};
+
+const total = function(count) {
+  let result = 0;
+  for (let i = 0; i <= count; i++) {
+    result += i;
+  }
+  return result;
+}.memoize();
+console.log(total(100000000));
+```
+
+## 函数包装
+
+```javascript
+const person = {
+  run(name, age) {
+    console.log("我正在奔跑 , name = ", name, ",age = ", age);
+  },
+};
+
+person.run("张三", 12);
+
+// 定义一个包装函数
+/*
+      entity : 要包装的对象 
+      name : 要包装的方法名 
+      wrapper : 包装函数 
+    */
+
+function wrap(entity, name, wrapper) {
+  const fn = entity[name];
+  // 先保存住之前的函数 ,填充到 origin 中  ,
+  // 然后调用 wrapper , 使用 concat 把  origin 和 原先的参数 进行合并
+  return (entity[name] = function() {
+    return wrapper.apply(
+      this,
+      [fn.bind(this)].concat(Array.prototype.slice.call(arguments))
+    );
+  });
+}
+
+wrap(person, "run", function(origin, name, age) {
+  console.log("我是包装过的方法", "name = ", name, ", age = ", age);
+});
+
+person.run("张三", 14);
+```
+
+## 即时函数
+
+基本写法
+
+```javascript
+(function(key) {
+  console.log(key);
+})(1);
+```
+
+让代码变简洁
+
+1. 他可以创建出一个单独的作用域
+
+```javascript
+(function() {
+  var a = 1;
+})();
+console.log(a); // undefined
+```
+
+2. 还可以通过这个来限制名称
+
+```javascript
+var $ = JQuery();
+(function() {
+  var $ = MyJquery();
+  // $.xxx()
+})();
+```
+
+3. 让代码变简洁 ... 这个自己看吧
+
+**主要是关于闭包的问题**
+
+一下代码 压根就不符合我们的预期, 我们的预期应该是 第一个函数, 执行 0 , 第二个 执行 1 , 为啥会变成这样 所有函数都返回 10 呢 ?
+
+因为**闭包记住的是变量的引用,而不是闭包创建时该变量的值, 这是一个重要的区别**
+
+```javascript
+let funcs = [];
+for (var i = 0; i < 10; i++) {
+  funcs.push(function() {
+    console.log(i);
+  });
+}
+console.log(funcs[0]()); // 10
+```
+
+我们可以利用 函数中的值传递 , 将值 传递进去 , 当然也可以用 let 来解决
+
+```javascript
+let funcs = [];
+for (var i = 0; i < 10; i++)
+  (function(i) {
+    funcs.push(function() {
+      console.log(i);
+    });
+  })(i);
+funcs[0](); // 0
+```
