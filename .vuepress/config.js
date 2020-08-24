@@ -2,6 +2,7 @@ const generatorNavs = () => {
   return [
     { name: "文章", path: "/pages/article/" },
     { name: "书籍", path: "/pages/books/" },
+    { name: "linux相关", path: "/pages/linux/" },
     { name: "数据结构", path: "/pages/data-structure/" },
     { name: "设计模式", path: "/pages/dp/" },
     { name: "技术栈", path: "/pages/middle/" },
