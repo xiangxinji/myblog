@@ -9,12 +9,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev .",
-    "build" : "vuepress build ."
+    "build": "vuepress build ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.5.4",
+    "@vuepress/plugin-medium-zoom": "^1.5.4",
+    "@vuepress/plugin-nprogress": "^1.5.4",
     "vuepress": "^1.2.0"
   }
 }

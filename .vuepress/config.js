@@ -6,7 +6,6 @@ const generatorNavs = () => {
     { name: "数据结构", path: "/pages/data-structure/" },
     { name: "设计模式", path: "/pages/dp/" },
     { name: "技术栈", path: "/pages/middle/" },
-    { name: "兼容", path: "/pages/jr/" },
   ];
 };
 
@@ -19,12 +18,12 @@ module.exports = {
       config.output.publicPath = "/myBlog";
     }
   },
-  title: "Singee手记",
+  title: "Panda Eyes",
   themeConfig: {
     repo: "https://github.com/xiangxinji/myblog.git",
     repoLabel: "存储库",
     smoothScroll: true,
-    lastUpdated: "singee 写于 ", // string | boolean
+    lastUpdated: " 写于 ", // string | boolean
     nav: generatorNavs().map((item) => ({ text: item.name, link: item.path })),
     sidebar: generatorNavs().map((item) => ({
       title: item.name,
@@ -35,4 +34,5 @@ module.exports = {
   markdown: {
     lineNumbers: true,
   },
+  plugins: ['@vuepress/medium-zoom','@vuepress/nprogress','@vuepress/active-header-links']
 };
