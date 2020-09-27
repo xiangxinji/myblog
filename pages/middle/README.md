@@ -13,3 +13,5 @@
 ## [Vue3](/pages/middle/vue3)
 
 ## [GraphQL](/pages/middle/graphql/learn)
+
+## [Redis](/pages/middle/redis)
